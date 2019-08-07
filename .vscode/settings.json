@@ -1,0 +1,16 @@
+{
+    "github.customPullRequestDescription": "singleLine",
+    "github.remoteName": "D3dartBoard",
+    "git.autofetch": true,
+    "github.allowUnsafeSSL": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "git.fetchOnPull": true,
+    "html.format.indentInnerHtml": true,
+    "git.alwaysShowStagedChangesResourceGroup": true
+}
+
+/*
+,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
+*/
