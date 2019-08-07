@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/var/www/html/CV/Master/docs"
+		},
+		{
+			"path": "/var/www/html/d3DartBoard"
+		}
+	],
+	"settings": {
+		"telemetry.enableCrashReporter": false,
+		"telemetry.enableTelemetry": false
+	}
+}
