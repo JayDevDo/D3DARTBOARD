@@ -6,7 +6,7 @@ let jdMNSegArrLen 	= jdSegArray.length || 0 ;
 let scrnW			= (document.innerWidth *0.66);
 let ActDim 			= (scrnW * (1/divWidth) ) || 500  ; 
 let CurDrtBid 		= "jdDartBoard" ;
-let pageLoc         = location.origin;
+let pageLoc         = location.href;
 
 console.log(
     "darboard creation: ", lr, 
