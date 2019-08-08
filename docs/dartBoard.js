@@ -1,6 +1,5 @@
 let lr = '\n';
-let dbJSONDataUrl   = "data/jsonDartBoard102.json";
-let dbJSDataUrl     = "data/jsDartBoard102.js";
+let dbJSDataUrl     = "jsDartBoard102.js";
 let jdSegArray 	    = jsdartboard102 ;
 let divWidth        = document.getElementById("mySVGdartBoard").getAttribute("width");
 let jdMNSegArrLen 	= jdSegArray.length || 0 ;
