@@ -6,12 +6,14 @@ let jdMNSegArrLen 	= jdSegArray.length || 0 ;
 let scrnW			= (document.innerWidth *0.66);
 let ActDim 			= (scrnW * (1/divWidth) ) || 500  ; 
 let CurDrtBid 		= "jdDartBoard" ;
+let pageLoc         = location.origin;
 
 console.log(
     "darboard creation: ", lr, 
     "ActDim: ", ActDim, lr,
     "DartBoardId: ", CurDrtBid, lr,
-    'jdSegArray len: ' , jdMNSegArrLen
+    'jdSegArray len: ' , jdMNSegArrLen,
+    "hosted on:", pageLoc
 ) ;
 
 d3.select(".JDDbCanvas").remove();
@@ -131,6 +133,8 @@ let mySvg = d3.select( "#mySVGdartBoard")
                         .attr("class",'JDDbSegment' )
                         .on("click", FnSegmentClick )
     ;
+
+    d3.select("pageLoc").append("<i>").text("This page is hosted on:" + pageLoc);
 
     function FnSegmentClick(d,i,e){
         let ClickedSegment = d ;
