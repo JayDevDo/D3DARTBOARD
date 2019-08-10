@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "/var/www/html/d3DartBoard"
+		},
+		{
+			"path": "/var/www/html/CV/docs"
 		}
 	],
 	"settings": {
