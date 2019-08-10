@@ -1,13 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "/var/www/html/CV/Master/docs"
-		},
-		{
 			"path": "/var/www/html/d3DartBoard"
 		},
 		{
-			"path": "/var/www/html/CV/docs"
+			"path": "/var/www/html/CV"
 		}
 	],
 	"settings": {
