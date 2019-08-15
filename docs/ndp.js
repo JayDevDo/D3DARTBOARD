@@ -85,7 +85,7 @@ function ndpClrs(dnDiff){
         case 2:     dnClrId = 3;
                     break;
     }
-    console.log("dnDiff", dnDiff, "dnClrId", dnClrId, "same?", ( dnClrId === ( dnDiff + 1 ) )  );
+   // console.log("dnDiff", dnDiff, "dnClrId", dnClrId, "same?", ( dnClrId === ( dnDiff + 1 ) )  );
     return  clrArr[dnClrId]
 }
 
