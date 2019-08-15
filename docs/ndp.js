@@ -176,7 +176,7 @@ function getNDPathToFD(){
                         finishesFDbl.push({ 'dart': 1, 'seg': favDbls[2].seg , 'val': favDbls[2].val } )
                     }
 
-                    console.log("switch( dn 1: pathAlive ", pathAlive, finishesFDbl );
+                    // console.log("switch( dn 1: pathAlive ", pathAlive, finishesFDbl );
                     break;
 
         /* if dn = 2 */
@@ -188,7 +188,7 @@ function getNDPathToFD(){
                     ];
 
                     pathAlive = false; 
-                    console.log("switch( dn 2: pathAlive ", pathAlive );
+                    // console.log("switch( dn 2: pathAlive ", pathAlive );
                     for(fdval=0; fdval<3; fdval++){
                         console.log("case 2 each fd val", fdArrVals[fdval] );
                         let segExixts = lpThruVal( (finSB - fdArrVals[fdval]) ,"board") ;
@@ -203,7 +203,7 @@ function getNDPathToFD(){
                             }
                     
                     }
-                    console.log("switch( dn 2: pathAlive ", pathAlive, finishesFDbl );
+                    // console.log("switch( dn 2: pathAlive ", pathAlive, finishesFDbl );
                     break;
 
         /* if dn = 3 */
@@ -218,7 +218,7 @@ function getNDPathToFD(){
                         if( sbProfile[p] == "S" | sbProfile[p] == "SB" ){ srchForArr.push(1) }    
                     }
  
-                    console.log("checking 3 darter ", finSB, "prf:", sbProfile, "srchForArr", srchForArr );
+                  //  console.log("checking 3 darter ", finSB, "prf:", sbProfile, "srchForArr", srchForArr );
                     for(drt1=0; drt1<102 ;drt1++){
                         let drt1SegId = jsonSegArr[drt1];
                         if( ( getDN(finSB-drt1SegId.SegVal) != 2 ) ){  continue }
@@ -245,6 +245,7 @@ function getNDPathToFD(){
                                             }else if( drt3SegId.seg == "DBL" ){
                                                 df = ( drt1SegId.SegMulti * drt2SegId.SegMulti * 3 );
                                             }
+                                            /*
 
                                             console.log(
                                                 "this path is a possible option for", finSB, 
@@ -254,6 +255,8 @@ function getNDPathToFD(){
                                                 "=", isCscore ,
                                                 "df", df
                                             )
+                                            */
+
                                             if( (drt2SegId.SegVal > drt1SegId.SegVal) && (srchForArr[0] == "T") ){
                                                 // skip this option we'll take with the highest T first
                                             }else if( drt1SegId.SegId.slice(0,1)=="S" ){  
@@ -305,7 +308,7 @@ function lpThruVal(val, arrName){
                 retvalLp.status = true;
                 retvalLp.seg = fdSeg.seg ;
                 retvalLp.val = fdSeg.val ;
-                console.log("found match !", fdSeg )
+              //  console.log("found match !", fdSeg )
             }
             
             // console.log("retvalLp", retvalLp)
