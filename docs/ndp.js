@@ -154,6 +154,8 @@ function getNDPathToFD(){
     let finishesFTrpl   = [];
     let finSB = sb();
     let dn = getDN( finSB );
+    let sbProfile = scores[finSB].EZVISITPROFILE.split("-");
+
     let pathAlive = true; // positive start ;-)
     console.log("getNDPathToFD ", "finSB", finSB , "dn", dn)
     switch( dn ){
@@ -209,7 +211,6 @@ function getNDPathToFD(){
         /* if dn = 3 */
         case 3:     // 3 darters ..
                     pathAlive = false; 
-                    sbProfile = scores[finSB].EZVISITPROFILE.split("-");
                     let srchForArr = [];
 
                     for(p=0;p<sbProfile.length;p++ ){
@@ -285,7 +286,7 @@ function getNDPathToFD(){
                         } // End of: dartvalue of drt1 != 0, need to check !
                     } // nd of: dart 1 loop
 
-                    console.log("switch( dn 3: pathAlive ", pathAlive, finishesFDbl );
+                    // console.log("switch( dn 3: pathAlive ", pathAlive, finishesFDbl );
 
                     break;
 
