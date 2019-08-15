@@ -157,7 +157,7 @@ function getNDPathToFD(){
     let sbProfile = scores[finSB].EZVISITPROFILE.split("-");
 
     let pathAlive = true; // positive start ;-)
-    console.log("getNDPathToFD ", "finSB", finSB , "dn", dn)
+    console.log("getNDPathToFD ", "finSB", finSB , "dn", dn, "sbProfile", sbProfile.valueOf() )
     switch( dn ){
         /* if dn = 0 */
         case 0:     // no route to fav Dbls
