@@ -1,4 +1,4 @@
-var jsdartboard102 =
+let jsdartboard102 =
 [
 	{
 		"SegId" : "M01",

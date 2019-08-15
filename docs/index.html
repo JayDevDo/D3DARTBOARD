@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-<!-- CV-JQ(new)/cvJQ.html -->
-<!-- svg xmlns="http://www.w3.org/2000/svg"> </svg -->
+<!-- https://jaydevdo.github.io/D3dartBoard/index.html  -->
+<!-- http://127.0.0.1/d3DartBoard/docs/index.html            -->
+<!-- svg xmlns="http://www.w3.org/2000/svg"> </svg      -->
 
     <body>
         <div id="pageWrapper">
@@ -21,10 +22,17 @@
             </div>
 
         </div>
-        <div id="pageLoc"></div>
+            <label for=sb>Score preview</label>
+            <input id="sb" name="sb" type="number" placeholder="121" required/>
+            <button onclick="getNDPData()" >see preview</button>
+            <button onclick="getNDPathToFD()" > show finishes leading to favorite Doubles</button>
+            <button onclick="pathWithFav()" > show finishes using favorite Triples</button>
+    <div id="pageLoc"></div>
     </body>
 
 </html>
-<script src="jsDartBoard102.js"></script>
+
 <script src="d3/d3.min.js"></script>
 <script src="dartBoard.js"></script>
+<script src="ndp.js"></script>
+

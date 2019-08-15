@@ -1,29 +1,45 @@
 let lr = '\n';
-let dbJSDataUrl     = "jsDartBoard102.js";
-let jdSegArray 	    = jsdartboard102 ;
-let divWidth        = document.getElementById("mySVGdartBoard").getAttribute("width");
-let jdMNSegArrLen 	= jdSegArray.length || 0 ;
-let scrnW			= (document.innerWidth *0.66);
-let ActDim 			= (scrnW * (1/divWidth) ) || 500  ; 
-let CurDrtBid 		= "jdDartBoard" ;
-let pageLoc         = location.href;
+let pageLoc     = location.href;
+let divWidth    = document.getElementById("mySVGdartBoard").getAttribute("width");
+let scrnW		= (document.innerWidth *0.66);
+let ActDim 		= (scrnW * (1/divWidth) ) || 500  ; 
+let CurDrtBid 	= "jdDartBoard" ;
+let jsonSegArr  = [];
+let jsonDir     = "data/jsonDartBoard102.json";
+let jdata       = d3.json( jsonDir );
+          
+if( !jsonSegArr ){
+    console.log("ndp.js jsonSegArr doesn't exist" );
+}else{
+    if( jsonSegArr.length > 1 ){
+        console.log("ndp.js jsonSegArr exists + loaded", jsonSegArr.length )
+    }else{
+        jdata.then(
+            (data)=>{ 
+                jsonSegArr = data;
+                console.log("ndp.js jsonSegArr existed but then not loaded", jsonSegArr.length );
+                createDartBoard();
+            }
+        );
+    }    
+}
 
-console.log(
-    "darboard creation: ", lr, 
-    "ActDim: ", ActDim, lr,
-    "DartBoardId: ", CurDrtBid, lr,
-    'jdSegArray len: ' , jdMNSegArrLen,
-    "hosted on:", pageLoc
-) ;
+function createDartBoard(){
+    console.log(
+        "darboard creation: ", lr, 
+        "ActDim: ", ActDim, lr,
+        "DartBoardId: ", CurDrtBid, lr,
+        'jsonSegArr len: ' , jsonSegArr.length , lr,
+        "hosted on:", pageLoc
+    ) ;
 
-d3.select(".JDDbCanvas").remove();
-d3.select(".dartboardbg").remove();
-d3.select(".JDDbSgmnt").remove();
-d3.select(".JDDbSegment").remove();
-d3.select(".JDDMDOTxt").remove();
-
-let mySvgMsgCntr =  d3.select("#msgCenter") ;
-let mySvg = d3.select( "#mySVGdartBoard")
+    d3.select(".JDDbCanvas").remove();
+    d3.select(".dartboardbg").remove();
+    d3.select(".JDDbSgmnt").remove();
+    d3.select(".JDDbSegment").remove();
+    d3.select(".JDDMDOTxt").remove();
+        
+    let mySvg = d3.select( "#mySVGdartBoard")
                 .attr("width",  ActDim  )
                 .attr("height", ActDim  )
                     .append("svg")
@@ -34,7 +50,7 @@ let mySvg = d3.select( "#mySVGdartBoard")
                         .attr("fill", 	"#005C00"       )
                         .attr("id",     CurDrtBid       )
                         .attr("class", 	"JDDbCanvas"    )
-            ;
+    ;
 
     // starting dartboard build
     let JDDbSgmntCount = 0 ;
@@ -55,9 +71,9 @@ let mySvg = d3.select( "#mySVGdartBoard")
             .attr("width", (ActDim))
             .attr("height", (ActDim))
             .attr("id", "dartboardbg")
-            .attr("fill", "#6699ff")
+            .attr("fill", "#0099cc") // #99ff66
     ;	// End of: rect svg + DNN
-
+    
     let JDDbSgmntGrp    =   d3.select(".JDDbCanvas")
                                 .append("g")
                                     .attr("id", "JDDbSgmnts")
@@ -66,7 +82,7 @@ let mySvg = d3.select( "#mySVGdartBoard")
                                     .attr("stroke", "#C0C0C0")
                                     .attr("transform", "translate(" + JDDbCntr + "," + JDDbCntr + ")")
                             ;
-
+    
     let JDDbSgmntTxtGrp =   d3.select( ".JDDbCanvas" )
                                 .append("g")
                                     .attr("id", "JDDbSgmntTxts")
@@ -80,16 +96,16 @@ let mySvg = d3.select( "#mySVGdartBoard")
                                     .attr("text-anchor", "middle")
                                     .attr("transform", "translate(" + JDDbCntr + "," + JDDbCntr + ")")
                             ;
-
+    
     let JDDbSgmntArc    =   d3.arc()
                                 .innerRadius(   function(data){ return (JDDbR * JDDbRadPercArr[data.SegInRad]);})
                                 .outerRadius(   function(data){ return ((JDDbR * 0.995) * JDDbRadPercArr[data.SegOutRad]);})
                                 .startAngle(    function(data){ return (data.SegSA * (Math.PI/180));}) 
                                 .endAngle(      function(data){ return (data.SegEA * (Math.PI/180)); }) 
                             ;
-
+    
     JDDbSgmntGrp.selectAll("path")
-        .data(jdSegArray) // starting the json data loop here jdMNSegArr
+        .data(jsonSegArr) // starting the json data loop here jdMNSegArr
             .enter()
                 .append("path")
                     .attr("d", JDDbSgmntArc)
@@ -107,9 +123,9 @@ let mySvg = d3.select( "#mySVGdartBoard")
                     .attr("class", 'JDDbSegment' )
                     .on('click', FnSegmentClick )
     ; 
-
+    
     JDDbSgmntTxtGrp.selectAll("text")
-        .data(jdSegArray)
+        .data(jsonSegArr)
             .enter()
                 .append("text")
                     .filter( (d)=>{ return d.SegMulti < 1; })
@@ -133,31 +149,35 @@ let mySvg = d3.select( "#mySVGdartBoard")
                         .attr("class",'JDDbSegment' )
                         .on("click", FnSegmentClick )
     ;
+} // End of fn createDartBoard
 
-    d3.select("pageLoc").append("<i>").text("This page is hosted on:" + pageLoc);
 
-    function FnSegmentClick(d,i,e){
-        let ClickedSegment = d ;
-        let msg =   [   "You clicked on: ", 
-                        ClickedSegment.SegId, 
-                        " which has a value of: ", 
-                        ClickedSegment.SegVal 
-                    ].join("");
+function FnSegmentClick(d,i,e){
+    let ClickedSegment = d ;
+    let msg =   [   "You clicked on: ", 
+                    ClickedSegment.SegId, 
+                    " which has a value of: ", 
+                    ClickedSegment.SegVal 
+                ].join("");
 
-        let curMsgArr   = document.getElementsByClassName("dbMsgGrp");
-        let curMsgCount = curMsgArr.length ;
-        let msgHeight = ((ActDim / 8) + 5) ;
-        let msgOffsetY = 10;
-        mySvgMsgCntr
-            .insert("div",":first-child")
-                .text( msg )
-                .attr("font-family",    "Verdana"           )
-                .attr("font-size",      "24px"              )
-                .attr("class",          "dbMsgT"            )
-            ;
+    let curMsgArr   = document.getElementsByClassName("dbMsgGrp");
+    let curMsgCount = curMsgArr.length ;
+    let msgHeight = ((ActDim / 8) + 5) ;
+    let msgOffsetY = 10;
+    mySvgMsgCntr
+        .insert("div",":first-child")
+            .text( msg )
+            .attr("font-family",    "Verdana"           )
+            .attr("font-size",      "24px"              )
+            .attr("class",          "dbMsgT"            )
+        ;
 
-            console.log(
-                "myNodes-FnSegmentClick:", " is active.", lr, 
-                "ClickedSegment: ", ClickedSegment.SegTxt 
-            );
-    }
+        console.log(
+            "myNodes-FnSegmentClick:", " is active.", lr, 
+            "ClickedSegment: ", ClickedSegment.SegTxt 
+        );
+}
+
+let mySvgMsgCntr =  d3.select("#msgCenter") ;
+d3.select("pageLoc").append("<i>").text("This page is hosted on:" + pageLoc);
+
