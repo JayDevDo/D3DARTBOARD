@@ -12,12 +12,12 @@ if( !jsonSegArr ){
     console.log("ndp.js jsonSegArr doesn't exist" );
 }else{
     if( jsonSegArr.length > 1 ){
-        console.log("ndp.js jsonSegArr exists + loaded", jsonSegArr.length )
+        console.log("dartBoard.js jsonSegArr exists + loaded", jsonSegArr.length )
     }else{
         jdata.then(
             (data)=>{ 
                 jsonSegArr = data;
-                console.log("ndp.js jsonSegArr existed but then not loaded", jsonSegArr.length );
+                console.log("dartBoard.js jsonSegArr existed but then not loaded, now =", jsonSegArr.length );
                 createDartBoard();
             }
         );
@@ -47,7 +47,7 @@ function createDartBoard(){
                         .attr("y", 		"1px"           )
                         .attr("width", 	ActDim          )
                         .attr("height", ActDim          )
-                        .attr("fill", 	"#005C00"       )
+                        .attr("fill", 	"#000000"       )
                         .attr("id",     CurDrtBid       )
                         .attr("class", 	"JDDbCanvas"    )
     ;
@@ -71,7 +71,7 @@ function createDartBoard(){
             .attr("width", (ActDim))
             .attr("height", (ActDim))
             .attr("id", "dartboardbg")
-            .attr("fill", "#0099cc") // #99ff66
+            .attr("fill", "#000000") // #99ff66
     ;	// End of: rect svg + DNN
     
     let JDDbSgmntGrp    =   d3.select(".JDDbCanvas")
@@ -87,7 +87,7 @@ function createDartBoard(){
                                 .append("g")
                                     .attr("id", "JDDbSgmntTxts")
                                     .attr("class", "JDDMDOTxt")
-                                    .attr("stroke", "#000000") // #FFFFFF = white 
+                                    .attr("stroke", "#FFFFFF") // #FFFFFF = white 
                                     .style("font-family", "helvetica")
                                     .style("font-size", JDDbMDOTxtSz + "em")
                                     .attr("stroke-width", 2)
@@ -137,17 +137,17 @@ function createDartBoard(){
                             }
                     )
                     .text( (d)=>{ return parseInt(d.SegGrp,10); })
-                        .attr("dx",1)	//	JDDbCntr
-                        .attr("dy",5)	//	JDDbCntr	
-                        .attr("id", ( (d)=>{ return d.SegId; } ) )
-                        .attr("SegVal", '0' )
-                        .attr("SegGrp", '0' )
-                        .attr("SegMulti", '0' )
-                        .attr("dart1",'false' ) 
-                        .attr("dart2",'false' ) 
-                        .attr("dart3",'false' ) 
-                        .attr("class",'JDDbSegment' )
-                        .on("click", FnSegmentClick )
+                    .attr("dx",1)	//	JDDbCntr
+                    .attr("dy",5)	//	JDDbCntr	
+                    .attr("id", ( (d)=>{ return d.SegId; } ) )
+                    .attr("SegVal", '0' )
+                    .attr("SegGrp", '0' )
+                    .attr("SegMulti", '0' )
+                    .attr("dart1",'false' ) 
+                    .attr("dart2",'false' ) 
+                    .attr("dart3",'false' ) 
+                    .attr("class",'JDDbSegment' )
+                    .on("click", FnSegmentClick )
     ;
 } // End of fn createDartBoard
 

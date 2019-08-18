@@ -22,3 +22,12 @@ body{
     color: black;
 }
   
+#msgCenter > div > table{
+    background-color: coral;
+    color: black;
+}
+
+#finTable > tr{
+    background-color: #fff;
+    color: black;
+}

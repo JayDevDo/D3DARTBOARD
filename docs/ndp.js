@@ -57,6 +57,7 @@ if( !scores ){
 function sb(){
     let newSB = 121;
     let sbEl = document.getElementById('sb').value ;
+    if( sbEl==undefined ){ sbEl = newSB; }
     // console.log("function sb:", sbEl );
     return sbEl;
 }
@@ -118,6 +119,7 @@ function getNDPData(){
 
             if( thisDNDiff !=0 ){
                 d3.select("#"+ seg.SegId ).style("fill", arrEntry.NewColor );
+                /*
                 console.log(
                     "checking dartboard (", seg.SegId , 
                     "segVal",               seg.SegVal,     
@@ -126,6 +128,7 @@ function getNDPData(){
                     "thisDNDiff",           thisDNDiff,
                     "arrEntry:",            arrEntry 
                 );    
+                */
             }else{
                 d3.select("#"+ seg.SegId ).style("fill", "#006400" );
             }
@@ -136,28 +139,14 @@ function getNDPData(){
 function getNDPathToFD(){
     let finishesAll     = [];
     let finishesFDbl    = [];
-    /*
-        [   { 
-                seg: "",
-                va;: 0,
-            },
-            { 
-                seg: "",
-                va;: 0,
-            },
-            { 
-                seg: "",
-                va;: 0,
-            }
-        ]
-    */
     let finishesFTrpl   = [];
     let finSB = sb();
     let dn = getDN( finSB );
-    let sbProfile = scores[finSB].EZVISITPROFILE.split("-");
+    let sbProfile = scores[finSB].VISITPROFILE.split("-");
+    let sbProfileEZ = scores[finSB].EZVISITPROFILE.split("-");
 
     let pathAlive = true; // positive start ;-)
-    console.log("getNDPathToFD ", "finSB", finSB , "dn", dn, "sbProfile", sbProfile.valueOf() )
+    console.log("getNDPathToFD ", "finSB", finSB , "dn", dn, "Profiles", sbProfile.valueOf(), sbProfileEZ.valueOf() )
     switch( dn ){
         /* if dn = 0 */
         case 0:     // no route to fav Dbls
@@ -190,104 +179,33 @@ function getNDPathToFD(){
                     ];
 
                     pathAlive = false; 
-                    // console.log("switch( dn 2: pathAlive ", pathAlive );
-                    for(fdval=0; fdval<3; fdval++){
-                        console.log("case 2 each fd val", fdArrVals[fdval] );
-                        let segExixts = lpThruVal( (finSB - fdArrVals[fdval]) ,"board") ;
-                            if( segExixts.status == true ){ 
-                                pathAlive = true;
-                                let flOption = 
-                                   [   
-                                    { 'dart': 1, 'seg':segExixts.seg ,'val': segExixts.val },
-                                    { 'dart': 2, 'seg':favDbls[fdval].seg ,'val': favDbls[fdval].val },
-                                ]
-                                finishesFDbl.push( flOption );                       
-                            }
-                    
-                    }
-                    // console.log("switch( dn 2: pathAlive ", pathAlive, finishesFDbl );
+
+                        // console.log("switch( dn 2: pathAlive ", pathAlive );
+                        for(fdval=0; fdval<3; fdval++){
+                            console.log("case 2 each fd val", fdArrVals[fdval] );
+                            let segExixts = lpThruVal( (finSB - fdArrVals[fdval]) ,"board") ;
+                                if( segExixts.status == true ){ 
+                                    pathAlive = true;
+                                    // let df = ( drt1SegId.SegMulti * 2 );
+                                    let flOption = 
+                                    [   
+                                            { 'dart': 1, 'seg':segExixts.seg ,'val': segExixts.val },
+                                            { 'dart': 2, 'seg':favDbls[fdval].seg ,'val': favDbls[fdval].val },
+                                            { 'dart': 3, 'seg':"DNN" ,'val': 0 },
+                                            { 'diff': 0 }
+                                        ];
+                                    finishesFDbl.push( flOption );                       
+                                }
+                        }
+                        // console.log("switch( dn 2: pathAlive ", pathAlive, finishesFDbl );
                     break;
 
         /* if dn = 3 */
         case 3:     // 3 darters ..
                     pathAlive = false; 
-                    let srchForArr = [];
-
-                    for(p=0;p<sbProfile.length;p++ ){
-                        if( sbProfile[p] == "T" ){ srchForArr.push(3) }
-                        if( sbProfile[p] == "D" | sbProfile[p] == "DB"  ){ srchForArr.push(2) }
-                        if( sbProfile[p] == "S" | sbProfile[p] == "SB" ){ srchForArr.push(1) }    
-                    }
- 
-                  //  console.log("checking 3 darter ", finSB, "prf:", sbProfile, "srchForArr", srchForArr );
-                    for(drt1=0; drt1<102 ;drt1++){
-                        let drt1SegId = jsonSegArr[drt1];
-                        if( ( getDN(finSB-drt1SegId.SegVal) != 2 ) ){  continue }
-                        
-                        if( srchForArr[0] == drt1SegId.SegMulti ){
-                            // dartvalue of drt1 != 0, need to check !
-                            for(drt2=0; drt2<102 ;drt2++){
-                                let drt2SegId = jsonSegArr[drt2];
-
-                                if( srchForArr[1] == drt2SegId.SegMulti ){
-                                    // dartvalue of drt1 != 0, need to check !
-                                    for(drt3=0; drt3<3 ;drt3++){
-                                        let drt3SegId = favDbls[drt3];
-                                        let isCscore  = ( ((drt1SegId.SegVal)+(drt2SegId.SegVal)+(drt3SegId.val)) == finSB )
-
-                                        if(isCscore){ 
-                                            pathAlive = true; 
-                                            let df = ( drt1SegId.SegMulti * drt2SegId.SegMulti * 2 );
-
-                                            if( drt1SegId.SegId == "DBL" ){
-                                                df = ( ( drt1SegId.SegMulti * 1.5 ) * drt2SegId.SegMulti * 2 );
-                                            }else if( drt2SegId.SegId == "DBL" ){
-                                                df = ( ( drt2SegId.SegMulti * 1.5 ) * drt1SegId.SegMulti * 2 );
-                                            }else if( drt3SegId.seg == "DBL" ){
-                                                df = ( drt1SegId.SegMulti * drt2SegId.SegMulti * 3 );
-                                            }
-                                            /*
-
-                                            console.log(
-                                                "this path is a possible option for", finSB, 
-                                                drt1SegId.SegId, 
-                                                drt2SegId.SegId,
-                                                drt3SegId.seg,
-                                                "=", isCscore ,
-                                                "df", df
-                                            )
-                                            */
-
-                                            if( (drt2SegId.SegVal > drt1SegId.SegVal) && (srchForArr[0] == "T") ){
-                                                // skip this option we'll take with the highest T first
-                                            }else if( drt1SegId.SegId.slice(0,1)=="S" ){  
-                                                // skip this option we'll take with the highest T first
-                                            }else if( drt2SegId.SegId.slice(0,1)=="S" ){  
-                                                // skip this option we'll take with the highest T first
-                                            }else{
-                                                let flOption = [
-                                                                    { 'dart': 1, 'seg':drt1SegId.SegId ,   'val': drt1SegId.SegVal     },
-                                                                    { 'dart': 2, 'seg':drt2SegId.SegId ,   'val': drt2SegId.SegVal     },
-                                                                    { 'dart': 3, 'seg':drt3SegId.seg ,     'val': drt3SegId.val   },
-                                                                    { 'diff': df }
-                                                ];
-                                                finishesFDbl.push( flOption );                                     
-                                            }
-                                        }
-                                    } // End of: dart 3 loop
-
-                                }else{
-                                    // dartvalue of drt2 == 0, no need to check.
-                                }     
-                            } // End of: dart 2 loop
-
-                        }else{
-                            // dartvalue of drt1 == 0, no need to check.
-                        } // End of: dartvalue of drt1 != 0, need to check !
-                    } // nd of: dart 1 loop
-
-                    // console.log("switch( dn 3: pathAlive ", pathAlive, finishesFDbl );
-
+                    finishesFDbl = get3Darter(finSB,sbProfile,sbProfileEZ);
+                    console.log("resultarr len", finishesFDbl.length );
+                    console.log("switch( dn 3: pathAlive ", pathAlive, finishesFDbl );
                     break;
 
         /* if dn > 3 */
@@ -296,6 +214,98 @@ function getNDPathToFD(){
                         break;
 
     }
+    addFinishTable(finishesFDbl)
+}
+
+function get2Darter(){
+    
+}
+
+function get3Darter(finSB, sbProfile, sbProfileEZ){
+    let srchForArr      = [];
+    let srchForArrEZ    = [];
+    let resultArr       = [];
+
+    for(p=0;p<sbProfile.length;p++ ){
+        if( sbProfile[p] == "T" ){ srchForArr.push(3) }
+        if( sbProfile[p] == "D" | sbProfile[p] == "DB"  ){ srchForArr.push(2) }
+        if( sbProfile[p] == "S" | sbProfile[p] == "SB" ){ srchForArr.push(1) }    
+    }
+
+    for(p=0;p<sbProfileEZ.length;p++ ){
+        if( sbProfileEZ[p] == "T" ){ srchForArrEZ.push(3) }
+        if( sbProfileEZ[p] == "D" | sbProfileEZ[p] == "DB"  ){ srchForArrEZ.push(2) }
+        if( sbProfileEZ[p] == "S" | sbProfileEZ[p] == "SB" ){ srchForArrEZ.push(1) }    
+    }
+
+    //  console.log("checking 3 darter ", finSB, "prf:", sbProfile, "srchForArr", srchForArr );
+    for(drt1=0; drt1<102 ;drt1++){
+        let drt1SegId = jsonSegArr[drt1];
+        if(  getDN(finSB-drt1SegId.SegVal) != 2 ){  continue }
+        // if( drt1SegId.SegMulti=3 && drt1SegId.SegVal < 21 ){ continue  }
+        
+        if( (srchForArr[0] == drt1SegId.SegMulti) || (srchForArrEZ[0] == drt1SegId.SegMulti) ){
+            // dartvalue of drt1 != 0, need to check !
+            for(drt2=0; drt2<102 ;drt2++){
+                let drt2SegId = jsonSegArr[drt2];
+
+                if( (srchForArr[1] == drt2SegId.SegMulti) || (srchForArrEZ[1] == drt2SegId.SegMulti) ){
+                    // dartvalue of drt1 != 0, need to check !
+                    for(drt3=0; drt3<3 ;drt3++){
+                        let drt3SegId = favDbls[drt3];
+                        let isCscore  = ( ((drt1SegId.SegVal)+(drt2SegId.SegVal)+(drt3SegId.val)) == finSB )
+
+                        if(isCscore){ 
+                            pathAlive = true; 
+                            let df = ( drt1SegId.SegMulti * drt2SegId.SegMulti * 2 );
+
+                            if( drt1SegId.SegId == "DBL" ){
+                                df = ( ( drt1SegId.SegMulti * 1.5 ) * drt2SegId.SegMulti * 2 );
+                            }else if( drt2SegId.SegId == "DBL" ){
+                                df = ( ( drt2SegId.SegMulti * 1.5 ) * drt1SegId.SegMulti * 2 );
+                            }else if( drt3SegId.seg == "DBL" ){
+                                df = ( drt1SegId.SegMulti * drt2SegId.SegMulti * 3 );
+                            }
+                            /*
+                            console.log(
+                                "this path is a possible option for", finSB, 
+                                drt1SegId.SegId, 
+                                drt2SegId.SegId,
+                                drt3SegId.seg,
+                                "=", isCscore ,
+                                "df", df
+                            )
+                            */
+
+                            if( (drt2SegId.SegVal > drt1SegId.SegVal) && (srchForArr[0] == "T") ){
+                                // skip this option we'll take with the highest T first
+                            }else if( (drt1SegId.SegId.slice(0,1)=="S") && (drt1SegId.SegId != "SBL") ){  
+                                // skip this option we'll take with the highest T first
+                            }else if( (drt2SegId.SegId.slice(0,1)=="S") && (drt2SegId.SegId != "SBL")  ){  
+                                // skip this option we'll take with the highest T first
+                            }else{
+                                let flOption = [
+                                                    { 'dart': 1, 'seg':drt1SegId.SegId ,   'val': drt1SegId.SegVal     },
+                                                    { 'dart': 2, 'seg':drt2SegId.SegId ,   'val': drt2SegId.SegVal     },
+                                                    { 'dart': 3, 'seg':drt3SegId.seg ,     'val': drt3SegId.val   },
+                                                    { 'diff': df }
+                                ];
+                                resultArr.push( flOption );                                     
+                            }
+                        }
+                    } // End of: dart 3 loop
+
+                }else{
+                    // dartvalue of drt2 == 0, no need to check.
+                }     
+            } // End of: dart 2 loop
+
+        }else{
+            // dartvalue of drt1 == 0, no need to check.
+        } // End of: dartvalue of drt1 != 0, need to check !
+    } // nd of: dart 1 loop
+
+    return resultArr;
 }
 
 function lpThruVal(val, arrName){
@@ -333,11 +343,39 @@ function lpThruVal(val, arrName){
     }
 }
 
-/*
-console.log(
-    "-1:", ndpClrs(-1),lr,
-    " 0:", ndpClrs(0), lr,
-    " 1:", ndpClrs(1), lr,
-    " 2:", ndpClrs(2), lr
-)
-*/
+function addFinishTable(finArr){
+    console.log("addFinishTable", finArr );
+    // sorting to diff
+    finArr.sort((a, b)=>{ return a[3].diff-b[3].diff;});
+
+    let finGroup =  d3.select("#finTable") ;
+    var column_names = ["Diff","dart1","dart2","dart3"];
+    d3.select(".finTableRes").remove();
+    var table = d3.select("#finTable").append("table").attr("class", "finTableRes"); 
+    table.append("thead").append("tr");
+    
+    var headers =   table.select("tr").selectAll("th")
+                        .data(column_names)
+                            .enter()
+                                .append("th")
+                                .text(function(d) { return d; })
+                    ;
+
+    table.append("tbody");
+    table.select("tbody").selectAll("tr")
+        .data(finArr)
+            .enter()
+                .append("tr").html(
+                    (d)=>{ 
+                        let finTrow =   [   "<tr>", 
+                                                "<td>", d[3].diff, "</td>",
+                                                "<td>", d[0].seg, "</td>",
+                                                "<td>", d[1].seg, "</td>",
+                                                "<td>", d[2].seg, "</td>",                            
+                                            "</tr>"
+                                        ]; 
+                        return finTrow.join("");
+                    }
+                )
+    ;
+}

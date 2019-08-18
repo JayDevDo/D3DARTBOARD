@@ -18,14 +18,15 @@
             </div>
 
             <div id="msgCenter">
-
+                <div id="finTable" >
+                </div>
             </div>
 
         </div>
             <label for=sb>Score preview</label>
             <input id="sb" name="sb" type="number" placeholder="121" required/>
             <button onclick="getNDPData()" >see preview</button>
-            <button onclick="getNDPathToFD()" > show finishes leading to favorite Doubles</button>
+            <button onclick="makeFinList()" > show finishes leading to favorite Doubles</button>
             <button onclick="pathWithFav()" > show finishes using favorite Triples</button>
     <div id="pageLoc"></div>
     </body>
@@ -35,4 +36,4 @@
 <script src="d3/d3.min.js"></script>
 <script src="dartBoard.js"></script>
 <script src="ndp.js"></script>
-
+<script src="ndpv2.js"></script>
