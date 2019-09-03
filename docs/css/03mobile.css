@@ -3,3 +3,7 @@
     width: 100%;
   }
   
+  #btnFinLstAll,
+  #btnFinLstFav{
+      display:none;
+  }

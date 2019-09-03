@@ -20,14 +20,26 @@
                 <div class="col-12 col-s-12">
 
                     <div class="col-12 col-s-12">
-                        <label for=sb>Score preview</label>
-                        <input id="sb" name="sb" type="number" placeholder="121" required/>        
+                        <div class="col-6 col-s-6">
+                            <label for=sb>Score preview</label>
+                            <a>
+                                <input  id="sb" 
+                                        name="sb"         
+                                        type="number" 
+                                        placeholder="121" 
+                                        required
+                                /> 
+                            </a>
+                        </div>
+                        <button onclick="getNDPData()" 
+                                class="col-6 col-s-6" 
+                        > See preview
+                        </button>
                     </div>
 
                     <div class="col-12 col-s-12">
-                        <button onclick="getNDPData()"> See preview</button>
-                        <button onclick="makeFinList()"> Show finishes leading to favorite Doubles</button>
-                        <button onclick="pathWithFav()"> Show finishes using favorite Triples</button>        
+                        <button id="btnFinLstAll" onclick="makeFinList()"> Show finishes leading to favorite Doubles</button>
+                        <button id="btnFinLstFav"onclick="pathWithFav()"> Show finishes using favorite Triples</button>        
                     </div>
 
                 </div>

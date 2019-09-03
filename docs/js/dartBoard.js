@@ -115,9 +115,6 @@ function createDartBoard(){
                     .attr("SegMulti",   (data)=>{ return data.SegMulti; })
                     .attr("style",      (data)=>{ return "fill:" + data.SegColor + ";"; } ) 
                     .attr("SegColor",   (data)=>{ return data.SegColor; } )
-                    .attr("dart1", 'false') 
-                    .attr("dart2", 'false') 
-                    .attr("dart3", 'false') 
                     .attr("jdcolored", 'false') 
                     .attr("class", 'JDDbSegment' )
                     .on('click', FnSegmentClick )
@@ -141,15 +138,11 @@ function createDartBoard(){
                     .attr("id", ( (d)=>{ return d.SegId; } ) )
                     .attr("SegVal", '0' )
                     .attr("SegGrp", '0' )
-                    .attr("SegMulti", '0' )
-                    .attr("dart1",'false' ) 
-                    .attr("dart2",'false' ) 
-                    .attr("dart3",'false' ) 
+                    .attr("SegMulti", '0' ) 
                     .attr("class",'JDDbSegment' )
                     .on("click", FnSegmentClick )
     ;
 } // End of fn createDartBoard
-
 
 function FnSegmentClick(d,i,e){
     let ClickedSegment = d ;
