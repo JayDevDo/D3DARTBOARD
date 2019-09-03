@@ -1,7 +1,10 @@
 <html>
     <head>
         <title>Jay's d3 dartboard</title>
-        <link rel="stylesheet" type="text/css" href="d3DartBoard.css">
+        <link rel="stylesheet" type="text/css" href="css/01main.css">
+        <link rel="stylesheet" type="text/css" media="(max-width: 768px)" href="css/02tablet.css">
+        <link rel="stylesheet" type="text/css" media="(max-width: 600px)"href="css/03mobile.css">
+        <script src="d3/d3.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -12,28 +15,45 @@
 
     <body>
         <div id="pageWrapper">
+            <div class="col-6 col-s-6" >
 
-            <div id="mySVGdartBoard" width="500px" >
+                <div class="col-12 col-s-12">
 
+                    <div class="col-12 col-s-12">
+                        <label for=sb>Score preview</label>
+                        <input id="sb" name="sb" type="number" placeholder="121" required/>        
+                    </div>
+
+                    <div class="col-12 col-s-12">
+                        <button onclick="getNDPData()"> See preview</button>
+                        <button onclick="makeFinList()"> Show finishes leading to favorite Doubles</button>
+                        <button onclick="pathWithFav()"> Show finishes using favorite Triples</button>        
+                    </div>
+
+                </div>
+
+                <div id="mySVGdartBoard" class="col-12 col-s-12">
+
+                </div>
+    
             </div>
 
-            <div id="msgCenter">
-                <div id="finTable" >
+            <div id="msgCenter" class="col-6 col-s-6">
+                <div id="finTable" class="col-12 col-s-12" >
                 </div>
             </div>
 
         </div>
-            <label for=sb>Score preview</label>
-            <input id="sb" name="sb" type="number" placeholder="121" required/>
-            <button onclick="getNDPData()" >see preview</button>
-            <button onclick="makeFinList()" > show finishes leading to favorite Doubles</button>
-            <button onclick="pathWithFav()" > show finishes using favorite Triples</button>
-    <div id="pageLoc"></div>
+
+        <div id="pageLoc" class="col-12 col-s-12" ></div>
     </body>
 
 </html>
 
-<script src="d3/d3.min.js"></script>
-<script src="dartBoard.js"></script>
-<script src="ndp.js"></script>
-<script src="ndpv2.js"></script>
+<script>
+    let pageLoc = location.href;
+    d3.select("#pageLoc").append("i").text("This page is hosted on:" + pageLoc);
+</script>
+<script src="js/dartBoard.js"></script>
+<script src="js/ndp.js"></script>
+<script src="js/ndpv2.js"></script>

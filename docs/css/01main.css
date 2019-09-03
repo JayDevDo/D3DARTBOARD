@@ -1,0 +1,65 @@
+@media only screen and (orientation: landscape) {
+  body{
+    background-color: black;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  body{
+    background-color: black;
+  }
+}
+
+
+/* For desktop: */
+@media only screen and (min-width: 768px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+.dbMsgT{
+  background-color: lightsalmon;
+  color: black;
+}
+
+#finTable > tr{
+  background-color: #fff;
+  color: black;
+}
+
+i{
+  color: #ffffff;
+}
+
+label{
+  color: #ffffff;
+}
+
+#msgCenter{
+    overflow-y: scroll;
+}
+
+#msgCenter > div > table{
+  background-color: coral;
+  color: black;
+}
+
+#mySVGdartBoard{
+  width: 100%;
+/*  background-color: darkorange; */
+}
+
+#pageWrapper{
+  display: flex;
+  flex-flow: row;
+}

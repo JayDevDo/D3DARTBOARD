@@ -1,5 +1,4 @@
 let lr = '\n';
-let pageLoc     = location.href;
 let divWidth    = document.getElementById("mySVGdartBoard").getAttribute("width");
 let scrnW		= (document.innerWidth *0.66);
 let ActDim 		= (scrnW * (1/divWidth) ) || 500  ; 
@@ -179,5 +178,4 @@ function FnSegmentClick(d,i,e){
 }
 
 let mySvgMsgCntr =  d3.select("#msgCenter") ;
-d3.select("pageLoc").append("<i>").text("This page is hosted on:" + pageLoc);
 
