@@ -1,11 +1,14 @@
 let lr = '\n';
-let divWidth    = document.getElementById("mySVGdartBoard").getAttribute("width");
-let scrnW		= (document.innerWidth *0.66);
-let ActDim 		= (scrnW * (1/divWidth) ) || 500  ; 
+
+let mySvgMsgCntr =  d3.select("#msgCenter") ;
+let curMsgArr   = document.getElementsByClassName("dbMsgGrp");
+
 let CurDrtBid 	= "jdDartBoard" ;
 let jsonSegArr  = [];
 let jsonDir     = "data/jsonDartBoard102.json";
 let jdata       = d3.json( jsonDir );
+
+let ActDim 		=   0;
           
 if( !jsonSegArr ){
     console.log("ndp.js jsonSegArr doesn't exist" );
@@ -24,13 +27,14 @@ if( !jsonSegArr ){
 }
 
 function createDartBoard(){
+    let divW        =   document.getElementById('mySVGdartBoard').offsetWidth;
+    let divH        =   document.getElementById('mySVGdartBoard').offsetHeight;
+    // dartboard size is set in css according to device and orientation
     console.log(
-        "darboard creation: ", lr, 
-        "ActDim: ", ActDim, lr,
-        "DartBoardId: ", CurDrtBid, lr,
-        'jsonSegArr len: ' , jsonSegArr.length , lr,
-        "hosted on:", pageLoc
-    ) ;
+        "divW", divW, "divH", divH
+    );
+
+    ActDim =  divW;
 
     d3.select(".JDDbCanvas").remove();
     d3.select(".dartboardbg").remove();
@@ -152,10 +156,9 @@ function FnSegmentClick(d,i,e){
                     ClickedSegment.SegVal 
                 ].join("");
 
-    let curMsgArr   = document.getElementsByClassName("dbMsgGrp");
     let curMsgCount = curMsgArr.length ;
     let msgHeight = ((ActDim / 8) + 5) ;
-    let msgOffsetY = 10;
+    
     mySvgMsgCntr
         .insert("div",":first-child")
             .text( msg )
@@ -170,5 +173,4 @@ function FnSegmentClick(d,i,e){
         );
 }
 
-let mySvgMsgCntr =  d3.select("#msgCenter") ;
 

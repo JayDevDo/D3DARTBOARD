@@ -1,30 +1,17 @@
 @media only screen and (orientation: landscape) {
-  body{
-    background-color: black;
-  }
+  body{ background-color: black;}
 }
 
 @media only screen and (orientation: portrait) {
-  body{
-    background-color: black;
-  }
+  body{ background-color: #1258DC;}
 }
-
 
 /* For desktop: */
 @media only screen and (min-width: 768px) {
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
+}
+
+.biggerFont{
+  font-size: 1.5rem;
 }
 
 .dbMsgT{
@@ -47,6 +34,7 @@ label{
 
 #msgCenter{
     overflow-y: scroll;
+    background-color: silver;
 }
 
 #msgCenter > div > table{
@@ -54,12 +42,285 @@ label{
   color: black;
 }
 
-#mySVGdartBoard{
-  width: 100%;
-/*  background-color: darkorange; */
+
+.pageWrapper{
+  display: flex;
+  flex-direction: column;
+}  
+
+/* specific styling for devices */
+
+
+/* > 768 X 1024 L  large monitors */
+
+@media only screen 
+and (min-device-width : 1025px) 
+and (orientation : landscape) {
+
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
 }
 
-#pageWrapper{
-  display: flex;
-  flex-flow: row;
+/* > 768 X 1024 P  large monitors */
+
+@media only screen 
+and (min-device-width : 1025px) 
+and (orientation : portrait) {
+
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+
+}
+
+
+/* 768 X 1024 L  iPad */
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+/* 768 X 1024 P iPad */
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) { 
+
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+
+/* 375 X 812 L  iPhoneX */
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : landscape) { 
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+/* 375 X 812 P  iPhoneX */
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait) { 
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+
+
+/* 375 X 667 L ( Iphone 6-7-8 ) */
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : landscape) { 
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+/* 375 X 667 P ( Iphone 6-7-8 ) */
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait) { 
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+
+/* 320 X 568 L  ( Iphone 5-5S ) */
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : landscape) { 
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+
+/* 320 X 568 P ( Iphone 5-5S ) */
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : portrait) { 
+
+  #mySVGdartBoard{ width: 100%;  }
+
+}
+
+
+/* 480 X 320 L ( Iphone 2G, 3G, 4, 4S ) */
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) 
+and (orientation : landscape) { 
+
+  .biggerFont{ font-size: 1.0rem; }
+
+
+
+  .finBtnWrp{ float: right; }
+  #getNDP{ width: 40%; }
+  .inpWrp{ width: 100%;  }
+  #lblSB{ width: 15%; }
+  #mySVGdartBoard{ width: 240px; height: 240px; }
+  #sb{ width: 40%; }
+
+
+
+
+  .finBtnWrp,
+  .getndpBtnWrp,
+  .inpWrp,
+  .pageWrapper,
+  .scrWrp{
+    display: flex;
+  }
+
+  .pageWrapper{ flex-direction: column; }  
+  .scrWrp{ flex-direction: row; }
+
+  .getndpBtnWrp{ width: 40%; }
+    .getNDP{ width: 100%; }
+
+  .inpWrp{ width: 50%; }
+    .lblSB{ width: 50%; }
+    .sb{ width: 50%;  }
+
+  #mySVGdartBoard{ width: 310px; height: 310px; }
+
+  .finBtnWrp{ display: none;  }
+
+}
+
+
+/* 320 X 480 P  ( Iphone 2G, 3G, 4, 4S ) */
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) 
+and (orientation : portrait) { 
+
+  .biggerFont{ font-size: 1.0rem; }
+
+  .finBtnWrp,
+  .getndpBtnWrp,
+  .inpWrp,
+  .numpad,
+  .pageWrapper,
+  .scrWrp{
+    display: flex;
+  }
+
+  .pageWrapper{ flex-direction: column; }  
+  .scrWrp{ flex-direction: row; }
+
+  .numpad{
+    display: none;
+    height: 80%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  #numpad.active{
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
+    background-color: darkcyan;
+  }
+
+  .numpad_top,
+  .numpad_mddl,
+  .numpad_bttm,
+  .numpad_last{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .numpad button{
+    height: 20%;
+    width: 30%;
+  }
+
+  .getndpBtnWrp{ width: 40%; }
+    .getNDP{ width: 100%; }
+
+  .inpWrp{ width: 50%; }
+    .lblSB{ width: 50%; }
+    .sb{ width: 50%;  }
+
+  #mySVGdartBoard{ width: 310px; height: 310px; }
+
+  .finBtnWrp{ display: none;  }
+
 }

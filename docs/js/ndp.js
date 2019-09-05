@@ -36,6 +36,8 @@ let clrArr = [
 let ndpSegArray     =   [];
 let scores          =   [];
 let jscores         =   d3.json( "data/scores.json" );
+let numpadDiv       =   document.getElementById('numpad') ;
+
 
 if( !scores ){
     console.log("ndp.js jsonSegArr doesn't exist" );
@@ -53,6 +55,27 @@ if( !scores ){
         );
     }
 }
+
+function openNumpad(){
+    numpadDiv.className += " active";
+}
+
+function numPadInput(num){
+    let sbInp = document.getElementById('sb').value.toString() ;
+    curSB = [];
+    console.log("sbInp bfr input:", sbInp );
+    if( sbInp.length == 3){
+        curSB.push(num);
+    }else if( curSB.length < 3 ){
+        curSB.push(sbInp );
+        curSB.push(num.toString() );
+    }else{
+        curSB.push(num);
+    }
+    console.log( "sb aftr input:", curSB.join("") );
+    document.getElementById('sb').value = curSB.join("") ;
+}
+
 
 function sb(){
     let newSB = 121;
@@ -97,6 +120,8 @@ function getNDPData(){
         "jsonSegArr", jsonSegArr.length,
         "sb", getDN( sb() )
     );
+
+    d3.select(".dbMsgT").remove();
     createDartBoard();
 
     ndpSegArray = [];
