@@ -63,16 +63,23 @@ function openNumpad(){
 function numPadInput(num){
     let sbInp = document.getElementById('sb').value.toString() ;
     curSB = [];
-    console.log("sbInp bfr input:", sbInp );
-    if( sbInp.length == 3){
-        curSB.push(num);
-    }else if( curSB.length < 3 ){
-        curSB.push(sbInp );
-        curSB.push(num.toString() );
+   // console.log("sbInp bfr input:", sbInp );
+
+    if(num==='d'){
+        curSB = Array.from(sbInp );
+        curSB.pop();
     }else{
-        curSB.push(num);
+        if( sbInp.length == 3){
+            curSB.push(num);
+        }else if( curSB.length < 3 ){
+            curSB.push(sbInp );
+            curSB.push(num.toString() );
+        }else{
+            curSB.push(num);
+        }
     }
-    console.log( "sb aftr input:", curSB.join("") );
+
+    // console.log( "sb aftr input:", curSB.join("") );
     document.getElementById('sb').value = curSB.join("") ;
 }
 
@@ -80,20 +87,24 @@ function numPadInput(num){
 function sb(){
     let newSB = 121;
     let sbEl = document.getElementById('sb').value ;
-    if( sbEl==undefined ){ sbEl = newSB; }
+    if( (sbEl==undefined) || (sbEl==0) ){ sbEl = newSB; document.getElementById('sb').value = sbEl ; }
     // console.log("function sb:", sbEl );
     return sbEl;
 }
 
 function getDN(score){
     let retvalDN;
-        if( scores.length>1){
+    if( score && (score > 0) ){
+        if( scores.length>1 ){
             // console.log( "getDN ", score, "scores[score]", scores[score] );
             retvalDN = scores[score].DARTSNEEDED;
         }else{
             // console.log("scores.length !> 1");
             retvalDN = 9;
         }
+    }else{
+        retvalDN = 0;
+    }
     return retvalDN;
 }
 

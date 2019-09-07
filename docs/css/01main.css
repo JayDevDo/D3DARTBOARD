@@ -224,103 +224,183 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) 
 and (orientation : landscape) { 
 
-  .biggerFont{ font-size: 1.0rem; }
 
-
-
-  .finBtnWrp{ float: right; }
-  #getNDP{ width: 40%; }
-  .inpWrp{ width: 100%;  }
-  #lblSB{ width: 15%; }
-  #mySVGdartBoard{ width: 240px; height: 240px; }
-  #sb{ width: 40%; }
-
-
-
-
-  .finBtnWrp,
-  .getndpBtnWrp,
-  .inpWrp,
-  .pageWrapper,
-  .scrWrp{
-    display: flex;
+  .biggerFont{ 
+    font-size: 0.75rem; 
   }
 
-  .pageWrapper{ flex-direction: column; }  
-  .scrWrp{ flex-direction: row; }
+  .pageWrapper{ 
+    display: flex; 
+    flex-direction: row; 
+    text-align: center;
+  }  
 
-  .getndpBtnWrp{ width: 40%; }
-    .getNDP{ width: 100%; }
+    .scrWrp{ 
+      display: flex; 
+      flex-direction: row; 
+    }
 
-  .inpWrp{ width: 50%; }
-    .lblSB{ width: 50%; }
-    .sb{ width: 50%;  }
+        .scr_lbl{ 
+          color:  #ffffff;
+        }
 
-  #mySVGdartBoard{ width: 310px; height: 310px; }
+        .sb{ 
+          width: 50%;  
+        }
 
-  .finBtnWrp{ display: none;  }
+    .numpad{ 
+      display: none; 
+    }
+  
+    #numpad.active{ 
+      display: flex; 
+      flex-direction: column; 
+      height: 60%; 
+      width: 100%; 
+      z-index: 99; 
+    }
+
+      .numpad_bttm,.numpad_mddl,.numpad_last,.numpad_scr,.numpad_top{
+        flex-direction: row; 
+        width: 98%; 
+      }
+
+      .numpad span{ 
+        color: #ffffff;
+      }
+
+      .numpad_button{ 
+        height: 22%; 
+        width: 29%; 
+      }
+
+    .dbWrp{ 
+      width: 100%; 
+    }
+ 
+      #mySVGdartBoard{ 
+        width: 275px; 
+        height: 275px;
+      }
+
+      .finBtnWrp{ 
+        display: none; 
+      }
+  
+      #msgCenter{
+        display: none; 
+      }
+  
+      #finTable{
+        display: none; 
+      }  
 
 }
 
-
-/* 320 X 480 P  ( Iphone 2G, 3G, 4, 4S ) */
+ 
+/* 320 X 480 Portrait  ( Iphone 2G, 3G, 4, 4S ) */
 
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 480px) 
 and (orientation : portrait) { 
 
-  .biggerFont{ font-size: 1.0rem; }
-
-  .finBtnWrp,
-  .getndpBtnWrp,
-  .inpWrp,
-  .numpad,
-  .pageWrapper,
-  .scrWrp{
-    display: flex;
+  .biggerFont{ 
+    font-size: 0.75rem; 
   }
 
-  .pageWrapper{ flex-direction: column; }  
-  .scrWrp{ flex-direction: row; }
+  .pageWrapper{ 
+    display: flex; 
+    flex-direction: column; 
+    text-align: center;
+  }  
 
-  .numpad{
-    display: none;
-    height: 80%;
-    width: 100%;
-    z-index: -1;
-  }
+    .scrWrp{ 
+      display: flex; 
+      flex-direction: column; 
+    }
 
-  #numpad.active{
-    display: flex;
-    flex-direction: column;
-    z-index: 99;
-    background-color: darkcyan;
-  }
+      .inpWrp{ 
+        display: flex; 
+        width: 50%; 
+        flex-direction: row; 
+      }
 
-  .numpad_top,
-  .numpad_mddl,
-  .numpad_bttm,
-  .numpad_last{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
+        .lblSB{ 
+          width: 50%; 
+        }
 
-  .numpad button{
-    height: 20%;
-    width: 30%;
-  }
+        .sb{ 
+          width: 50%;  
+        }
 
-  .getndpBtnWrp{ width: 40%; }
-    .getNDP{ width: 100%; }
+    .numpad{ 
+      display: none; 
+    }
+  
+    #numpad.active{ 
+      display: flex; 
+      flex-direction: column; 
+      height: 60%; 
+      width: 100%; 
+      z-index: 99; 
+    }
 
-  .inpWrp{ width: 50%; }
-    .lblSB{ width: 50%; }
-    .sb{ width: 50%;  }
+      .numpad_bttm,.numpad_mddl,.numpad_last,.numpad_top{
+        flex-direction: row; 
+        width: 98%; 
+      }
 
-  #mySVGdartBoard{ width: 310px; height: 310px; }
+      .numpad_button{ 
+        height: 22%; 
+        width: 31.5%; 
+      }
 
-  .finBtnWrp{ display: none;  }
+    .dbWrp{ 
+      width: 100%; 
+    }
+ 
+      #mySVGdartBoard{ 
+        width: 290px; 
+        height: 290px;
+      }
+
+    .finBtnWrp{ 
+      display: none; 
+    }
+
+    #msgCenter{
+      display: none; 
+    }
+
+    #finTable{
+      display: none; 
+    }
 
 }
+
+/*
+The order in the HTML
+  class="pageWrapper"
+
+  class="scrWrp"
+    class="inpWrp"
+      class="lblSB"
+      class="sb biggerFont col-s-2"
+
+    class="numpadWrp"
+      class="numpad_top"
+      class="numpad_mddl"
+      class="numpad_bttm"
+      class="numpad_bttm"
+
+  class="dbWrp"
+    id="mySVGdartBoard"
+  
+  class="finBtnWrp"
+    id="btnFinLstAll"
+    id="btnFinLstFav"
+  
+    id="msgCenter"
+    id="finTable"
+*/

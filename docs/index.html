@@ -2,8 +2,6 @@
     <head>
         <title>Jay's d3 dartboard</title>
         <link   rel="stylesheet" type="text/css" href="css/01main.css">
-        <link   rel="stylesheet" 
-        href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
         <script src="d3/d3.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,44 +17,46 @@
 
             <div class="scrWrp" >
 
-                <div class="inpWrp">
-                    <label for=sb class="lblSB">Score</label>
-                    <input  class="sb biggerFont col-s-2"
-                            id="sb"
-                            name="sb"
-                            type="number" 
-                            placeholder="0"
-                            default="121"
-                            onfocus="openNumpad()"
-                            autofocus
-                    /> 
+                <div class="numpadWrp" id="numpad">
+                    <div class="numpad_scr" >
+                        <span class="scr_lbl">Score</span>
+                        <span>
+                            <input  class="sb biggerFont col-s-2"
+                                    id="sb"
+                                    name="sb"
+                                    type="number" 
+                                    placeholder="0"
+                                    default="121"
+                                    onfocus="openNumpad()"
+                                    autofocus
+                        />
+                        </span>
+                    </div>
+                    <div class="numpad_top">
+                        <button class="numpad_button" onclick="numPadInput(7)">7</button>
+                        <button class="numpad_button" onclick="numPadInput(8)">8</button>
+                        <button class="numpad_button" onclick="numPadInput(9)">9</button>
+                    </div>
+                    <div class="numpad_mddl">
+                        <button class="numpad_button" onclick="numPadInput(4)">4</button>
+                        <button class="numpad_button" onclick="numPadInput(5)">5</button>
+                        <button class="numpad_button" onclick="numPadInput(6)">6</button>
+                    </div>
+                    <div class="numpad_bttm">
+                        <button class="numpad_button" onclick="numPadInput(1)">1</button>
+                        <button class="numpad_button" onclick="numPadInput(2)">2</button>
+                        <button class="numpad_button" onclick="numPadInput(3)">3</button>
+                    </div>
+                    <div class="numpad_last">
+                        <button class="numpad_button" onclick="numPadInput('d')">&#9003</button>
+                        <button class="numpad_button" onclick="numPadInput(0)">0</button>
+                        <button class="numpad_button" onclick="getNDPData()" class="getNDP">OK</button>
+                    </div>
                 </div>
 
             </div>
-
-            <div class="numpad" id="numpad">
-                    <div class="numpad_top">
-                        <button onclick="numPadInput(7)">7</button>
-                        <button onclick="numPadInput(8)">8</button>
-                        <button onclick="numPadInput(9)">9</button>
-                    </div>
-                    <div class="numpad_mddl">
-                        <button onclick="numPadInput(4)">4</button>
-                        <button onclick="numPadInput(5)">5</button>
-                        <button onclick="numPadInput(6)">6</button>
-                    </div>
-                    <div class="numpad_bttm">
-                        <button onclick="numPadInput(1)">1</button>
-                        <button onclick="numPadInput(2)">2</button>
-                        <button onclick="numPadInput(3)">3</button>
-                    </div>
-                    <div class="numpad_bttm">
-                        <button onclick="numPadInput('')">Bckspc</button>
-                        <button onclick="numPadInput(0)">0</button>
-                        <button onclick="getNDPData()" class="getNDP">Show</button>
-                    </div>
-            </div>
     
+
             <div class="dbWrp">
                 <div id="mySVGdartBoard"></div>
             </div>
