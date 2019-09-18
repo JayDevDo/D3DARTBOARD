@@ -83,7 +83,7 @@
     }
 
     #msgCenter{
-      display: none; 
+      display: flex; 
     }
 
     #finTable{
