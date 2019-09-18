@@ -54,6 +54,7 @@ if( !scores ){
             
             ()=>{ 
                 console.log("choose to start finish view = off");
+                sb();
                 // getNDPData(); }
         );
     }
