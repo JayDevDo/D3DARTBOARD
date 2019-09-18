@@ -84,6 +84,7 @@
 
     #msgCenter{
       display: flex; 
+      color: aliceblue;
     }
 
     #finTable{
