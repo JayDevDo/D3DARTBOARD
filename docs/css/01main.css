@@ -85,6 +85,7 @@
     #msgCenter{
       display: flex; 
       color: aliceblue;
+      flex-direction: column;
     }
 
     #finTable{
