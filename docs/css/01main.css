@@ -8,45 +8,91 @@
 
 /* For desktop: */
 @media only screen and (min-width: 768px) {
+  .biggerFont{ 
+    font-size: 0.75rem; 
+  }
+
+  .pageWrapper{ 
+    display: flex; 
+    flex-direction: row; 
+    text-align: center;
+  }
+
+  .scrWrp{
+    width: 45%;
+  }
+
+  .scr_lbl{ 
+    color:  #ffffff;
+    font-weight: bold;
+  }
+
+  .sb{ 
+    color:  #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 3px solid red;
+  }
+
+  .numpadWrp{ 
+    height: 60%; 
+    width: 100%; 
+    z-index: 99; 
+  }
+
+    .numpadWrp span{ 
+      color: #ffffff;
+      width: 100%;
+      text-align: center;
+    }
+
+    .numpadWrp tr{
+      width: 100%;
+    }
+      
+    .numpadWrp td{
+      text-align: center;
+    }
+
+      .np{
+        width: 25%;
+      } 
+        
+      .numpad_button{ 
+        height: 100%; 
+        width: 100%; 
+      }
+
+      .sb{
+        font-size: 1.3rem;
+      }
+
+    .dbWrp{ 
+      width: 55%; 
+    }
+ 
+      #mySVGdartBoard{ 
+        width: 500px; 
+        height: 500;
+        margin-right: 0;
+      }
+
+    .finBtnWrp{ 
+      display: none; 
+    }
+
+    #msgCenter{
+      display: none; 
+    }
+
+    #finTable{
+      width: 50%;
+      color: yellow !important;
+/*      display: none;  */
+    }
 }
 
-.biggerFont{
-  font-size: 1.5rem;
-}
-
-.dbMsgT{
-  background-color: lightsalmon;
-  color: black;
-}
-
-#finTable > tr{
-  background-color: #fff;
-  color: black;
-}
-
-i{
-  color: #ffffff;
-}
-
-label{
-  color: #ffffff;
-}
-
-#msgCenter{
-    overflow-y: scroll;
-    background-color: silver;
-}
-
-#msgCenter > div > table{
-  background-color: coral;
-  color: black;
-}
-
-
-.pageWrapper{
-  display: flex;
-  flex-direction: column;
-}  
 
 /* specific styling for devices */
 
@@ -224,7 +270,6 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) 
 and (orientation : landscape) { 
 
-
   .biggerFont{ 
     font-size: 0.75rem; 
   }
@@ -233,67 +278,81 @@ and (orientation : landscape) {
     display: flex; 
     flex-direction: row; 
     text-align: center;
-  }  
+  }
 
-    .scrWrp{ 
-      display: flex; 
-      flex-direction: row; 
+  .scrWrp{
+    width: 45%;
+  }
+
+  .scr_lbl{ 
+    color:  #ffffff;
+    font-weight: bold;
+  }
+
+  .sb{ 
+    color:  #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 3px solid red;
+  }
+
+  .numpadWrp{ 
+    height: 60%; 
+    width: 100%; 
+    z-index: 99; 
+  }
+
+    .numpadWrp span{ 
+      color: #ffffff;
+      width: 100%;
+      text-align: center;
     }
 
-        .scr_lbl{ 
-          color:  #ffffff;
-        }
-
-        .sb{ 
-          width: 50%;  
-        }
-
-    .numpad{ 
-      display: none; 
+    .numpadWrp tr{
+      width: 100%;
     }
-  
-    #numpad.active{ 
-      display: flex; 
-      flex-direction: column; 
-      height: 60%; 
-      width: 100%; 
-      z-index: 99; 
+      
+    .numpadWrp td{
+      text-align: center;
     }
 
-      .numpad_bttm,.numpad_mddl,.numpad_last,.numpad_scr,.numpad_top{
-        flex-direction: row; 
-        width: 98%; 
-      }
-
-      .numpad span{ 
-        color: #ffffff;
-      }
-
+      .np{
+        width: 25%;
+      } 
+        
       .numpad_button{ 
-        height: 22%; 
-        width: 29%; 
+        height: 100%; 
+        width: 100%; 
+      }
+
+      .sb{
+        font-size: 1.3rem;
       }
 
     .dbWrp{ 
-      width: 100%; 
+      width: 55%; 
     }
  
       #mySVGdartBoard{ 
-        width: 275px; 
-        height: 275px;
+        width: 280px; 
+        height: 280px;
+        margin-right: 0;
       }
 
-      .finBtnWrp{ 
-        display: none; 
-      }
-  
-      #msgCenter{
-        display: none; 
-      }
-  
-      #finTable{
-        display: none; 
-      }  
+    .finBtnWrp{ 
+      display: none; 
+    }
+
+    #msgCenter{
+      display: none; 
+    }
+
+    #finTable{
+      width: 50%;
+      color: yellow !important;
+/*      display: none;  */
+    }
 
 }
 
@@ -313,47 +372,52 @@ and (orientation : portrait) {
     display: flex; 
     flex-direction: column; 
     text-align: center;
-  }  
+  }
 
-    .scrWrp{ 
-      display: flex; 
-      flex-direction: column; 
+  .scr_lbl{ 
+    color:  #ffffff;
+    font-weight: bold;
+  }
+
+  .sb{ 
+    color:  #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 3px solid red;
+  }
+
+  .numpadWrp{ 
+    height: 60%; 
+    width: 100%; 
+    z-index: 99; 
+  }
+
+    .numpadWrp span{ 
+      color: #ffffff;
+      width: 100%;
+      text-align: center;
     }
 
-      .inpWrp{ 
-        display: flex; 
-        width: 50%; 
-        flex-direction: row; 
-      }
-
-        .lblSB{ 
-          width: 50%; 
-        }
-
-        .sb{ 
-          width: 50%;  
-        }
-
-    .numpad{ 
-      display: none; 
+    .numpadWrp tr{
+      width: 100%;
     }
-  
-    #numpad.active{ 
-      display: flex; 
-      flex-direction: column; 
-      height: 60%; 
-      width: 100%; 
-      z-index: 99; 
+      
+    .numpadWrp td{
+      text-align: center;
     }
 
-      .numpad_bttm,.numpad_mddl,.numpad_last,.numpad_top{
-        flex-direction: row; 
-        width: 98%; 
-      }
-
+      .np{
+        width: 25%;
+      } 
+        
       .numpad_button{ 
-        height: 22%; 
-        width: 31.5%; 
+        height: 100%; 
+        width: 100%; 
+      }
+
+      .sb{
+        font-size: 1.3rem;
       }
 
     .dbWrp{ 
@@ -361,8 +425,8 @@ and (orientation : portrait) {
     }
  
       #mySVGdartBoard{ 
-        width: 290px; 
-        height: 290px;
+        width: 310px; 
+        height: 310px;
       }
 
     .finBtnWrp{ 
@@ -374,7 +438,7 @@ and (orientation : portrait) {
     }
 
     #finTable{
-      display: none; 
+      display: flex; 
     }
 
 }

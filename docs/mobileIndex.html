@@ -51,6 +51,43 @@
                         <td></td>
                     </tr>
                 </table>
+    
+                <!-- div class="numpadWrp" id="numpad">
+                    <div class="numpad_scr" >
+                        <span class="scr_lbl">Score</span>
+                        <span>
+                            <input  class="sb biggerFont col-s-2"
+                                    id="sb"
+                                    name="sb"
+                                    type="number" 
+                                    placeholder="0"
+                                    default="121"
+                                    onfocus="openNumpad()"
+                                    autofocus
+                        />
+                        </span>
+                    </div>
+                    <div class="numpad_top">
+                        <button class="numpad_button" onclick="numPadInput(7)">7</button>
+                        <button class="numpad_button" onclick="numPadInput(8)">8</button>
+                        <button class="numpad_button" onclick="numPadInput(9)">9</button>
+                    </div>
+                    <div class="numpad_mddl">
+                        <button class="numpad_button" onclick="numPadInput(4)">4</button>
+                        <button class="numpad_button" onclick="numPadInput(5)">5</button>
+                        <button class="numpad_button" onclick="numPadInput(6)">6</button>
+                    </div>
+                    <div class="numpad_bttm">
+                        <button class="numpad_button" onclick="numPadInput(1)">1</button>
+                        <button class="numpad_button" onclick="numPadInput(2)">2</button>
+                        <button class="numpad_button" onclick="numPadInput(3)">3</button>
+                    </div>
+                    <div class="numpad_last">
+                        <button class="numpad_button" onclick="numPadInput('d')">&#9003</button>
+                        <button class="numpad_button" onclick="numPadInput(0)">0</button>
+                        <button class="numpad_button" onclick="getNDPData()" class="getNDP">OK</button>
+                    </div>
+                </div -->
 
             </div>
     
@@ -62,7 +99,6 @@
             <div class="finBtnWrp">
                 <button id="btnFinLstAll" onclick="makeFinList()"> Show finishes using favorite Doubles</button>
                 <button id="btnFinLstFav" onclick="pathWithFav()"> Show finishes using favorite Triples</button>        
-                <button id="btnShowNormal" onclick="createDartBoard()"> Show normal dartboard</button>        
             </div>
 
             <div id="msgCenter"></div>

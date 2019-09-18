@@ -51,7 +51,10 @@ if( !scores ){
                 console.log("ndp.js scores existed but then not loaded", scores.length );
             }
         ).then(
-            ()=>{ getNDPData(); }
+            
+            ()=>{ 
+                console.log("choose to start finish view = off");
+                // getNDPData(); }
         );
     }
 }
@@ -61,7 +64,7 @@ function openNumpad(){
 }
 
 function numPadInput(num){
-    let sbInp = document.getElementById('sb').value.toString() ;
+    let sbInp = document.getElementById('sb').innerText.toString() ;
     curSB = [];
    // console.log("sbInp bfr input:", sbInp );
 
@@ -80,15 +83,18 @@ function numPadInput(num){
     }
 
     // console.log( "sb aftr input:", curSB.join("") );
-    document.getElementById('sb').value = curSB.join("") ;
+    document.getElementById('sb').innerText = curSB.join("") ;
 }
 
 
 function sb(){
     let newSB = 121;
-    let sbEl = document.getElementById('sb').value ;
-    if( (sbEl==undefined) || (sbEl==0) ){ sbEl = newSB; document.getElementById('sb').value = sbEl ; }
-    // console.log("function sb:", sbEl );
+    let sbEl = document.getElementById('sb').innerText ;
+  //  console.log("function sb:", sbEl );
+    if( (sbEl==undefined) || (sbEl==0) ){ 
+        sbEl = newSB; 
+        document.getElementById('sb').innerText = sbEl ; 
+    }
     return sbEl;
 }
 
