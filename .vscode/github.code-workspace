@@ -17,6 +17,9 @@
         },
         {
             "path": "/var/www/html/FPL"
+        },
+        {
+            "path": "/var/www/html/d3DartBoard2"
         }
     ]
 }
